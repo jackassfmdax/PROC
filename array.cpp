@@ -3,7 +3,7 @@
 #include "array.h"
 
 using namespace std;
-//ввод параметров диагональной матрицы из файла
+
 void ReadDiagonal(diagonal_ar &d_ar, ifstream &ifst)
 {
 	ifst >> d_ar.count;
@@ -11,7 +11,7 @@ void ReadDiagonal(diagonal_ar &d_ar, ifstream &ifst)
 	for (int i = 0; i < d_ar.count; i++)
 		ifst >> d_ar.ar_d[i];
 }
-//вывод параметров диагональной матрицы в поток
+
 void WriteDiagonal(diagonal_ar &d_ar, ofstream &ofst)
 {
 	ofst << "It is Diagonal Matrix: count of elements = " << d_ar.count << endl << "Matrix:" << endl;
@@ -25,7 +25,7 @@ void WriteDiagonal(diagonal_ar &d_ar, ofstream &ofst)
 		ofst << endl;
 	}
 }
-//ввод параметров обычной матрицы из файла
+
 void ReadUsual(usual_ar &us_ar, ifstream &ifst)
 {
 	ifst >> us_ar.count;
@@ -36,7 +36,7 @@ void ReadUsual(usual_ar &us_ar, ifstream &ifst)
 		for (int j = 0; j < us_ar.count; j++)
 			ifst >> us_ar.ar_us[i][j];
 }
-//вывод параметров обычной матрицы в поток
+
 void WriteUsual(usual_ar &us_ar, ofstream &ofst)
 {
 	ofst << "It is Usual Matrix: count of elements = " << us_ar.count << endl << "Matrix:" << endl;
@@ -47,7 +47,7 @@ void WriteUsual(usual_ar &us_ar, ofstream &ofst)
 		ofst << endl;
 	}
 }
-//ввод параметров матрицы из файла
+
 arrays* ReadArray(ifstream& ifst)
 {
 	arrays* ar = new arrays;
@@ -67,13 +67,12 @@ arrays* ReadArray(ifstream& ifst)
 		return NULL;
 	}
 }
-//вывод параметров текущей матрицы в поток
+
 void WriteArray(arrays &write_ar, ofstream &ofst)
 {
 	switch (write_ar.k)
 	{
 	case arrays::key::Diagonal:
-		WriteDiagonal(write_ar.d, ofst);
 		break;
 	case arrays::key::Usual:
 		WriteUsual(write_ar.us, ofst);

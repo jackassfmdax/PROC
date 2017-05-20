@@ -6,12 +6,12 @@ using namespace std;
 
 arrays* ReadArray(ifstream& ifst);
 void WriteArray(arrays &write_ar, ofstream &ofst);
-//инициализация  контейнера
+
 void Init(container& c)
 {
 	c.data = NULL;
 }
-//ввод матриц в контейнер из указанного потока
+
 void Input(container& c, ifstream& ifst)
 {
 	while (!ifst.eof())
@@ -23,21 +23,20 @@ void Input(container& c, ifstream& ifst)
 		c.lenght++;
 	}
 }
-//вывод содержимого контейнера в заданный выходной поток
+
 void Output(container& c, ofstream &ofst)
 {
 	ofst << "Container content " << c.lenght << " elements." << endl;
 	element* temp = c.data;
 	int num = c.lenght;
-	while (temp != NULL)
+	while (temp != 0)
 	{
-		ofst << num << ": ";
-		WriteArray(*(temp->ar), ofst);
+		if (temp->ar->k == 1)
+			WriteArray(*(temp->ar), ofst);
 		temp = temp->next;
-		num--;
 	}
 }
-//удаление матриц, установка контейнера в начальное состояние
+
 void Clear(container& c)
 {
 	while (c.data != 0)
