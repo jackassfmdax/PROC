@@ -17,7 +17,9 @@ struct diagonal_ar
 struct arrays
 {
 	enum key { Diagonal, Usual };
+	enum way {String, Column, Vector};
 	key k;
+	way w;
 	int count;
 	union
 	{
