@@ -1,27 +1,25 @@
 Filled contienr.
 Container content 4 elements.
-4: It is Usual Matrix: count of elements = 3
+4: It is Triangle Matrix: count of elements = 5
 Matrix:
-10	20	30	
-40	50	60	
-70	80	99	
-3: It is Diagonal Matrix: count of elements = 7
+1	0	0	0	0	
+2	3	0	0	0	
+4	5	6	0	0	
+7	8	9	10	0	
+11	12	13	14	15	
+3: It is Usual Matrix: count of elements = 3
 Matrix:
-1	0	0	0	0	0	0	
-0	2	0	0	0	0	0	
-0	0	3	0	0	0	0	
-0	0	0	4	0	0	0	
-0	0	0	0	5	0	0	
-0	0	0	0	0	6	0	
-0	0	0	0	0	0	7	
+12	45	78	
+23	56	89	
+87	54	21	
 2: It is Usual Matrix: count of elements = 2
 Matrix:
 4	9	
-16	25	
+7	12	
 1: It is Diagonal Matrix: count of elements = 3
 Matrix:
-2	0	0	
-0	4	0	
-0	0	6	
+7	0	0	
+0	5	0	
+0	0	3	
 Empty container.
 Container content 0 elements.
