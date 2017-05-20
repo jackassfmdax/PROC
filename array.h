@@ -25,6 +25,7 @@ struct arrays
 	enum key { Diagonal, Usual, Triangle };
 	key k;
 	int count;
+	int sum = 0;//
 	union
 	{
 		diagonal_ar d;
