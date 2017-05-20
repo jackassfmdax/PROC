@@ -6,12 +6,13 @@ using namespace std;
 
 arrays* ReadArray(ifstream& ifst);
 void WriteArray(arrays &write_ar, ofstream &ofst);
-//инициализация  контейнера
+int Sum(arrays &ar);
+
 void Init(container& c)
 {
 	c.data = NULL;
 }
-//ввод матриц в контейнер из указанного потока
+
 void Input(container& c, ifstream& ifst)
 {
 	while (!ifst.eof())
@@ -23,7 +24,7 @@ void Input(container& c, ifstream& ifst)
 		c.lenght++;
 	}
 }
-//вывод содержимого контейнера в заданный выходной поток
+
 void Output(container& c, ofstream &ofst)
 {
 	ofst << "Container content " << c.lenght << " elements." << endl;
@@ -37,7 +38,7 @@ void Output(container& c, ofstream &ofst)
 		num--;
 	}
 }
-//удаление матриц, установка контейнера в начальное состояние
+
 void Clear(container& c)
 {
 	while (c.data != 0)
@@ -47,4 +48,68 @@ void Clear(container& c)
 		c.data = temp;
 	}
 	c.lenght = 0;
+}
+
+void Sorting(container &c, bool sort)
+{
+	element *current = c.data, *temp = NULL, *prev = NULL;
+	bool flag;
+	do
+	{
+		flag = false;
+		current = c.data;
+		while (current->next)
+		{
+			if (sort == true)
+			{
+				if (Sum(*(current->ar)) > Sum(*(current->next->ar)))
+				{
+					if (current == c.data)
+					{
+						temp = current;
+						current = temp->next;
+						temp->next = current->next;
+						current->next = temp;
+						c.data = current;
+						flag = true;
+					}
+					else
+					{
+						temp = current;
+						current = temp->next;
+						temp->next = current->next;
+						current->next = temp;
+						prev->next = current;
+						flag = true;
+					}
+				}
+			}
+			else
+			{
+				if (Sum(*(current->ar)) < Sum(*(current->next->ar)))
+				{
+					if (current == c.data)
+					{
+						temp = current;
+						current = temp->next;
+						temp->next = current->next;
+						current->next = temp;
+						c.data = current;
+						flag = true;
+					}
+					else
+					{
+						temp = current;
+						current = temp->next;
+						temp->next = current->next;
+						current->next = temp;
+						prev->next = current;
+						flag = true;
+					}
+				}
+			}
+			prev = current;
+			current = current->next;
+		}
+	} while (flag);
 }
