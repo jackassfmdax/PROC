@@ -65,6 +65,20 @@ int UsualSum(usual_ar &us_ar)
 	return sum;
 }
 
+
+int Sum(arrays &ar)
+{
+	switch (ar.k)
+	{
+	case arrays::key::Diagonal:
+		return DiagonalSum(ar.d);
+	case arrays::key::Usual:
+		return UsualSum(ar.us);
+	default:
+		return NULL;
+	}
+}
+
 arrays* ReadArray(ifstream& ifst)
 {
 	arrays* ar = new arrays;
@@ -96,6 +110,12 @@ void WriteArray(arrays &write_ar, ofstream &ofst)
 	case arrays::key::Usual:
 		WriteUsual(write_ar.us, ofst);
 		ofst << "The sum of the elements = " << UsualSum(write_ar.us) << endl;
+
+		ofst << "The sum of the elements = " << Sum(write_ar) << endl;
+		break;
+	case arrays::key::Usual:
+		WriteUsual(write_ar.us, ofst);
+		ofst << "The sum of the elements = " << Sum(write_ar) << endl;
 		break;
 	default:
 		ofst << "Incorrect array!" << endl;
