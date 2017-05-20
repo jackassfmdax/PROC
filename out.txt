@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Filled contienr.
 Container content 4 elements.
 4: It is Usual Matrix: count of elements = 3
@@ -29,3 +30,5 @@ Matrix:
 Vector
 Empty container.
 Container content 0 elements.
+=======
+>>>>>>> newclass

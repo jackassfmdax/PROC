@@ -13,9 +13,12 @@ void Init(container& c);
 void Input(container& c, ifstream& ifst);
 void Output(container& c, ofstream& ofst);
 void Clear(container& c);
+void Sorting(container &c, bool sort);
 
 int main(int argc, char* argv[])
 {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	if (argc != 3) 
 	{
 		cout << "Incorrect command line! Waited: command in_file out_file" << endl;
@@ -28,7 +31,7 @@ int main(int argc, char* argv[])
 	container c;
 	Init(c);
 	Input(c, in);
-	out << "Filled contienr." << endl;
+	Sorting(c,true);
 	Output(c, out);
 	Clear(c);
 	out << "Empty container." << endl;
