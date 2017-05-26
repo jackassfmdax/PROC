@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include <fstream>
 #include "array.h"
+#include "protect.h"
 
 using namespace std;
 
 void ReadDiagonal(diagonal_ar &d_ar, ifstream &ifst)
 {
 	ifst >> d_ar.count;
+	CheckCount(d_ar.count);//
 	d_ar.ar_d = new int[d_ar.count];
 	for (int i = 0; i < d_ar.count; i++)
 		ifst >> d_ar.ar_d[i];
@@ -37,6 +39,7 @@ int DiagonalSum(diagonal_ar &d_ar)
 void ReadUsual(usual_ar &us_ar, ifstream &ifst)
 {
 	ifst >> us_ar.count;
+	CheckCount(us_ar.count);//
 	us_ar.ar_us = new int*[us_ar.count];
 	for (int i = 0; i < us_ar.count; i++)
 		us_ar.ar_us[i] = new int[us_ar.count];
@@ -59,6 +62,7 @@ void WriteUsual(usual_ar &us_ar, ofstream &ofst)
 void ReadTriangle(triangle_ar &tr_ar, ifstream &ifst)
 {
 	ifst >> tr_ar.count;
+	CheckCount(tr_ar.count);//
 	tr_ar.ar_tr = new int*[tr_ar.count];
 	for (int i = 0; i < tr_ar.count; i++)
 		tr_ar.ar_tr[i] = new int[tr_ar.count];
@@ -91,6 +95,14 @@ int UsualSum(usual_ar &us_ar)
 	return sum;
 }
 
+int TrianglSum(triangle_ar &tr_ar)
+{
+	int sum = 0;
+	for (int i = 0; i < tr_ar.count; i++)
+		for (int j = 0; j < tr_ar.count; j++)
+			sum += tr_ar.ar_tr[i][j];
+	return sum;
+}
 
 int Sum(arrays &ar)
 {
@@ -100,6 +112,8 @@ int Sum(arrays &ar)
 		return DiagonalSum(ar.d);
 	case arrays::key::Usual:
 		return UsualSum(ar.us);
+	case arrays::key::Triangle:
+		return TrianglSum(ar.tr);
 	default:
 		return NULL;
 	}
@@ -109,9 +123,13 @@ arrays* ReadArray(ifstream& ifst)
 {
 	arrays* ar = new arrays;
 	int key;
+	CheckInputFile(ifst);//
 	ifst >> key;
+	CheckWrongInput(ifst);//
+	CheckKey(key);//
 	int w;
 	ifst >> w;
+	CheckWay(w);
 	w--;
 	ar->w = (arrays::way)w;
 	switch (key)
@@ -144,14 +162,10 @@ void WriteArray(arrays &write_ar, ofstream &ofst)
 	case arrays::key::Usual:
 		WriteUsual(write_ar.us, ofst);
 		ofst << "The sum of the elements = " << UsualSum(write_ar.us) << endl;
-		ofst << "The sum of the elements = " << Sum(write_ar) << endl;
-		break;
-	case arrays::key::Usual:
-		WriteUsual(write_ar.us, ofst);
-		ofst << "The sum of the elements = " << Sum(write_ar) << endl;
 		break;
 	case arrays::key::Triangle:
 		WriteTriangle(write_ar.tr, ofst);
+		ofst << "The sum of the elements = " << TrianglSum(write_ar.tr) << endl;
 		break;
 	default:
 		ofst << "Incorrect array!" << endl;
