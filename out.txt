@@ -1,0 +1,16 @@
+Container content 5 elements.
+It is Usual Matrix: count of elements = 2
+Matrix:
+4	9	
+7	-1	
+The sum of the elements = 19
+String
+It is Usual Matrix: count of elements = 3
+Matrix:
+12	45	78	
+23	56	89	
+87	54	21	
+The sum of the elements = 465
+Column
+Empty container.
+Container content 0 elements.

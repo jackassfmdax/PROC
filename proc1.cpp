@@ -6,6 +6,7 @@
 #include <fstream>
 #include "windows.h"
 #include "container.h"
+#include "protect.h"
 
 using namespace std;
 
@@ -32,6 +33,7 @@ int main(int argc, char* argv[])
 	Init(c);
 	Input(c, in);
 	Sorting(c,true);
+	CheckOutputFile(out);//
 	Output(c, out);
 	Clear(c);
 	out << "Empty container." << endl;
