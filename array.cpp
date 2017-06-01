@@ -26,14 +26,6 @@ void WriteDiagonal(diagonal_ar &d_ar, ofstream &ofst)
 	}
 }
 
-int DiagonalSum(diagonal_ar &d_ar)
-{
-	int sum = 0;
-	for (int i = 0; i < d_ar.count; i++)
-		sum += d_ar.ar_d[i];
-	return sum;
-}
-
 void ReadUsual(usual_ar &us_ar, ifstream &ifst)
 {
 	ifst >> us_ar.count;
@@ -53,28 +45,6 @@ void WriteUsual(usual_ar &us_ar, ofstream &ofst)
 		for (int j = 0; j < us_ar.count; j++)
 			ofst << us_ar.ar_us[i][j] << '\t';
 		ofst << endl;
-	}
-}
-
-int UsualSum(usual_ar &us_ar)
-{
-	int sum = 0;
-	for (int i = 0; i < us_ar.count; i++)
-		for (int j = 0; j < us_ar.count; j++)
-			sum += us_ar.ar_us[i][j];
-	return sum;
-}
-
-int Sum(arrays &ar)
-{
-	switch (ar.k)
-	{
-	case arrays::key::Diagonal:
-		return DiagonalSum(ar.d);
-	case arrays::key::Usual:
-		return UsualSum(ar.us);
-	default:
-		return NULL;
 	}
 }
 
@@ -104,11 +74,9 @@ void WriteArray(arrays &write_ar, ofstream &ofst)
 	{
 	case arrays::key::Diagonal:
 		WriteDiagonal(write_ar.d, ofst);
-		ofst << "The sum of the elements = " << Sum(write_ar) << endl;
 		break;
 	case arrays::key::Usual:
 		WriteUsual(write_ar.us, ofst);
-		ofst << "The sum of the elements = " << Sum(write_ar) << endl;
 		break;
 	default:
 		ofst << "Incorrect array!" << endl;

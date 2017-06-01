@@ -19,7 +19,6 @@ struct arrays
 	enum key { Diagonal, Usual };
 	key k;
 	int count;
-	int sum = 0;//
 	union
 	{
 		diagonal_ar d;

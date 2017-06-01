@@ -13,12 +13,10 @@ void Init(container& c);
 void Input(container& c, ifstream& ifst);
 void Output(container& c, ofstream& ofst);
 void Clear(container& c);
-void Sorting(container &c, bool sort);
+void MultiMethod(container &c, ofstream &ofst);
 
 int main(int argc, char* argv[])
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
 	if (argc != 3) 
 	{
 		cout << "Incorrect command line! Waited: command in_file out_file" << endl;
@@ -31,8 +29,10 @@ int main(int argc, char* argv[])
 	container c;
 	Init(c);
 	Input(c, in);
-	Sorting(c,true);
+	out << "Filled contienr." << endl;
 	Output(c, out);
+	out << "Multimethod: " << endl;
+	MultiMethod(c, out);
 	Clear(c);
 	out << "Empty container." << endl;
 	Output(c, out);
