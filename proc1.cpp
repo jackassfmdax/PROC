@@ -15,6 +15,7 @@ void Input(container& c, ifstream& ifst);
 void Output(container& c, ofstream& ofst);
 void Clear(container& c);
 void Sorting(container &c, bool sort);
+void MultiMethod(container &c, ofstream &ofst);
 
 int main(int argc, char* argv[])
 {
@@ -35,6 +36,7 @@ int main(int argc, char* argv[])
 	Sorting(c,true);
 	CheckOutputFile(out);//
 	Output(c, out);
+	MultiMethod(c, out);
 	Clear(c);
 	out << "Empty container." << endl;
 	Output(c, out);

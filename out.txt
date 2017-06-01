@@ -1,16 +1,23 @@
-Container content 5 elements.
+Container content 2 elements.
 It is Usual Matrix: count of elements = 2
 Matrix:
 4	9	
-7	-1	
-The sum of the elements = 19
+7	12	
+The sum of the elements = 32
 String
-It is Usual Matrix: count of elements = 3
+Triangle & Usual arrays
+It is Triangle Matrix: count of elements = 3
 Matrix:
-12	45	78	
-23	56	89	
-87	54	21	
-The sum of the elements = 465
-Column
+1	0	0	
+2	3	0	
+4	5	6	
+The sum of the elements = 21
+Vector
+It is Usual Matrix: count of elements = 2
+Matrix:
+4	9	
+7	12	
+The sum of the elements = 32
+String
 Empty container.
 Container content 0 elements.

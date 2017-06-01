@@ -5,102 +5,104 @@
 
 using namespace std;
 
-void ReadDiagonal(diagonal_ar &d_ar, ifstream &ifst)
+void ReadDiagonal(diagonalArray &diagAr, ifstream &ifst)
 {
-	ifst >> d_ar.count;
-	CheckCount(d_ar.count);//
-	d_ar.ar_d = new int[d_ar.count];
-	for (int i = 0; i < d_ar.count; i++)
-		ifst >> d_ar.ar_d[i];
+	ifst >> diagAr.count;
+	CheckCount(diagAr.count);//
+	diagAr.arD = new int[diagAr.count];
+	for (int i = 0; i < diagAr.count; i++)
+		ifst >> diagAr.arD[i];
 }
 
-void WriteDiagonal(diagonal_ar &d_ar, ofstream &ofst)
+void WriteDiagonal(diagonalArray &diagAr, ofstream &ofst)
 {
-	ofst << "It is Diagonal Matrix: count of elements = " << d_ar.count << endl << "Matrix:" << endl;
-	for (int i = 0; i < d_ar.count; i++)
+	ofst << "It is Diagonal Matrix: count of elements = " << diagAr.count << endl << "Matrix:" << endl;
+	for (int i = 0; i < diagAr.count; i++)
 	{
-		for (int j = 0; j < d_ar.count; j++)
+		for (int j = 0; j < diagAr.count; j++)
 			if (i == j)
-				ofst << d_ar.ar_d[i] << '\t';
+				ofst << diagAr.arD[i] << '\t';
 			else
 				ofst << "0\t";
 		ofst << endl;
 	}
 }
 
-int DiagonalSum(diagonal_ar &d_ar)
+int DiagonalSum(diagonalArray &diagAr)
 {
 	int sum = 0;
-	for (int i = 0; i < d_ar.count; i++)
-		sum += d_ar.ar_d[i];
+	for (int i = 0; i < diagAr.count; i++)
+		sum += diagAr.arD[i];
 	return sum;
 }
 
-void ReadUsual(usual_ar &us_ar, ifstream &ifst)
+void ReadUsual(usualArray &usualAr, ifstream &ifst)
 {
-	ifst >> us_ar.count;
-	CheckCount(us_ar.count);//
-	us_ar.ar_us = new int*[us_ar.count];
-	for (int i = 0; i < us_ar.count; i++)
-		us_ar.ar_us[i] = new int[us_ar.count];
-	for (int i = 0; i < us_ar.count; i++)
-		for (int j = 0; j < us_ar.count; j++)
-			ifst >> us_ar.ar_us[i][j];
+	ifst >> usualAr.count;
+	CheckCount(usualAr.count);//
+	usualAr.arUs = new int*[usualAr.count];
+	for (int i = 0; i < usualAr.count; i++)
+		usualAr.arUs[i] = new int[usualAr.count];
+	for (int i = 0; i < usualAr.count; i++)
+		for (int j = 0; j < usualAr.count; j++)
+			ifst >> usualAr.arUs[i][j];
 }
 
-void WriteUsual(usual_ar &us_ar, ofstream &ofst)
+void WriteUsual(usualArray &usualAr, ofstream &ofst)
 {
-	ofst << "It is Usual Matrix: count of elements = " << us_ar.count << endl << "Matrix:" << endl;
-	for (int i = 0; i < us_ar.count; i++)
+	ofst << "It is Usual Matrix: count of elements = " << usualAr.count << endl << "Matrix:" << endl;
+	for (int i = 0; i < usualAr.count; i++)
 	{
-		for (int j = 0; j < us_ar.count; j++)
-			ofst << us_ar.ar_us[i][j] << '\t';
+		for (int j = 0; j < usualAr.count; j++)
+			ofst << usualAr.arUs[i][j] << '\t';
 		ofst << endl;
 	}
 }
 
-void ReadTriangle(triangle_ar &tr_ar, ifstream &ifst)
+void ReadTriangle(triangleArray &triangleAr, ifstream &ifst)
 {
-	ifst >> tr_ar.count;
-	CheckCount(tr_ar.count);//
-	tr_ar.ar_tr = new int*[tr_ar.count];
-	for (int i = 0; i < tr_ar.count; i++)
-		tr_ar.ar_tr[i] = new int[tr_ar.count];
-	for (int i = 0; i < tr_ar.count; i++)
-		for (int j = 0; j < tr_ar.count; j++)
+	ifst >> triangleAr.count;
+	CheckCount(triangleAr.count);//
+	triangleAr.arTr = new int*[triangleAr.count];
+	for (int i = 0; i < triangleAr.count; i++)
+		triangleAr.arTr[i] = new int[triangleAr.count];
+	for (int i = 0; i < triangleAr.count; i++)
+		for (int j = 0; j < triangleAr.count; j++)
 			if (i >= j)
-				ifst >> tr_ar.ar_tr[i][j];
+				ifst >> triangleAr.arTr[i][j];
+			else
+				triangleAr.arTr[i][j] = 0;
 }
 
-void WriteTriangle(triangle_ar &tr_ar, ofstream &ofst)
+void WriteTriangle(triangleArray &triangleAr, ofstream &ofst)
 {
-	ofst << "It is Triangle Matrix: count of elements = " << tr_ar.count << endl << "Matrix:" << endl;
-	for (int i = 0; i < tr_ar.count; i++)
+	ofst << "It is Triangle Matrix: count of elements = " << triangleAr.count << endl << "Matrix:" << endl;
+	for (int i = 0; i < triangleAr.count; i++)
 	{
-		for (int j = 0; j < tr_ar.count; j++)
+		for (int j = 0; j < triangleAr.count; j++)
 			if (i >= j)
-				ofst << tr_ar.ar_tr[i][j] << '\t';
+				ofst << triangleAr.arTr[i][j] << '\t';
 			else
 				ofst << "0\t";
 		ofst << endl;
 	}
 }
 
-int UsualSum(usual_ar &us_ar)
+int UsualSum(usualArray &usualAr)
 {
 	int sum = 0;
-	for (int i = 0; i < us_ar.count; i++)
-		for (int j = 0; j < us_ar.count; j++)
-			sum += us_ar.ar_us[i][j];
+	for (int i = 0; i < usualAr.count; i++)
+		for (int j = 0; j < usualAr.count; j++)
+			sum += usualAr.arUs[i][j];
 	return sum;
 }
 
-int TrianglSum(triangle_ar &tr_ar)
+int TrianglSum(triangleArray &triangleAr)
 {
 	int sum = 0;
-	for (int i = 0; i < tr_ar.count; i++)
-		for (int j = 0; j < tr_ar.count; j++)
-			sum += tr_ar.ar_tr[i][j];
+	for (int i = 0; i < triangleAr.count; i++)
+		for (int j = 0; j < triangleAr.count; j++)
+			sum += triangleAr.arTr[i][j];
 	return sum;
 }
 
@@ -151,25 +153,25 @@ arrays* ReadArray(ifstream& ifst)
 	}
 }
 
-void WriteArray(arrays &write_ar, ofstream &ofst)
+void WriteArray(arrays &writeAr, ofstream &ofst)
 {
-	switch (write_ar.k)
+	switch (writeAr.k)
 	{
 	case arrays::key::Diagonal:
-		WriteDiagonal(write_ar.d, ofst);
-		ofst << "The sum of the elements = " << DiagonalSum(write_ar.d) << endl;
+		WriteDiagonal(writeAr.d, ofst);
+		ofst << "The sum of the elements = " << DiagonalSum(writeAr.d) << endl;
 		break;
 	case arrays::key::Usual:
-		WriteUsual(write_ar.us, ofst);
-		ofst << "The sum of the elements = " << UsualSum(write_ar.us) << endl;
+		WriteUsual(writeAr.us, ofst);
+		ofst << "The sum of the elements = " << UsualSum(writeAr.us) << endl;
 		break;
 	case arrays::key::Triangle:
-		WriteTriangle(write_ar.tr, ofst);
-		ofst << "The sum of the elements = " << TrianglSum(write_ar.tr) << endl;
+		WriteTriangle(writeAr.tr, ofst);
+		ofst << "The sum of the elements = " << TrianglSum(writeAr.tr) << endl;
 		break;
 	default:
 		ofst << "Incorrect array!" << endl;
 	}
 	string w[3] = { "String", "Column", "Vector" };
-	ofst << w[write_ar.w].c_str() << endl;
+	ofst << w[writeAr.w].c_str() << endl;
 }

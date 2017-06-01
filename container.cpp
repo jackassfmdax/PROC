@@ -113,3 +113,77 @@ void Sorting(container &c, bool sort)
 		}
 	} while (flag);
 }
+
+void MultiMethod(container &c, ofstream &ofst)
+{
+	element *temp1 = c.data;
+	element *temp2 = c.data;
+	while (temp1->next != NULL)
+	{
+		temp2 = temp1->next;
+		while (temp2 != NULL)
+		{
+			switch (temp1->ar->k)
+			{
+			case arrays::Diagonal:
+				switch (temp2->ar->k)
+				{
+				case arrays::Diagonal:
+					ofst << "Diagonal & Diagonal arrays" << endl;
+					break;
+				case arrays::Usual:
+					ofst << "Diagonal & Usual arrays" << endl;
+					break;
+				case arrays::Triangle:
+					ofst << "Diagonal & Triangle arrays" << endl;
+					break;
+				default:
+					ofst << "Unknown type" << endl;
+					break;
+				}
+				break;
+			case arrays::Usual:
+				switch (temp2->ar->k)
+				{
+				case arrays::Diagonal:
+					ofst << "Usual & Diagonal arrays" << endl;
+					break;
+				case arrays::Usual:
+					ofst << "Usual & Usual arrays" << endl;
+					break;
+				case arrays::Triangle:
+					ofst << "Usual & Triangle arrays" << endl;
+					break;
+				default:
+					ofst << "Unknown type" << endl;
+					break;
+				}
+				break;
+			case arrays::Triangle:
+				switch (temp2->ar->k)
+				{
+				case arrays::Diagonal:
+					ofst << "Triangle & Diagonal arrays" << endl;
+					break;
+				case arrays::Usual:
+					ofst << "Triangle & Usual arrays" << endl;
+					break;
+				case arrays::Triangle:
+					ofst << "Triangle & Triangle arrays" << endl;
+					break;
+				default:
+					ofst << "Unknown type" << endl;
+					break;
+				}
+				break;
+			default:
+				ofst << "Unknown type" << endl;
+				break;
+			}
+			WriteArray(*(temp1->ar), ofst);
+			WriteArray(*(temp2->ar), ofst);
+			temp2 = temp2->next;
+		}
+		temp1 = temp1->next;
+	}
+}

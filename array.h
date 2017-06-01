@@ -2,36 +2,36 @@
 
 using namespace std;
 
-struct usual_ar
+struct usualArray
 {
 	int count;
-	int** ar_us;
+	int** arUs;
 };
 
-struct diagonal_ar
+struct diagonalArray
 {
 	int count;
-	int* ar_d;
+	int* arD;
 };
 
-struct triangle_ar
+struct triangleArray
 {
 	int count;
-	int** ar_tr;
+	int** arTr;
 };
 
 struct arrays
 {
 	enum way {String, Column, Vector};
-	enum key { Diagonal, Usual, Triangle };
+	enum key {Diagonal, Usual, Triangle};
 	key k;
 	way w;
 	int count;
 	int sum = 0;//
 	union
 	{
-		diagonal_ar d;
-		usual_ar us;
-		triangle_ar tr;
+		diagonalArray d;
+		usualArray us;
+		triangleArray tr;
 	};
 };
